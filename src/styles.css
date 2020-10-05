@@ -1,0 +1,27 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#forma {
+  display: flex;
+  min-width: 200px;
+  width: 80vw;
+  flex-direction: column;
+  background-color: peru;
+}
+
+#forma input {
+  text-align: center;
+  min-height: 20px;
+  font-size: 20px;
+}
+
+#forma label {
+  height: 40px;
+  font-size: 20px;
+  align-content: center;
+}
