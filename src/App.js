@@ -11,20 +11,22 @@ export default function App() {
     const f = parse(formula);
     let a = Number(initial);
     let b = Number(upper);
-    const lim = Number(limite);
+    const lim = abs(Number(limite));
 
     let c;
-    let fi = f.evaluate({ x: a });
-    let fu = f.evaluate({ x: b });
 
-    let e = abs(fi - fu);
     let i = 0;
-    while (1000 > i) {
+    const aprox = [1];
+    while (10000 > i) {
       c = (a + b) / 2.0;
       let mult = f.evaluate({ x: c }) * f.evaluate({ x: a });
-      arr.push(`mult: ${mult}, Raiz: ${c}, iteración: ${i}`);
+      let E = abs(1 - aprox[i - 1] / c);
+      aprox.push(c);
+      arr.push(
+        ` Raiz: ${c}, error: ${E * 100}%, mult: ${mult}, iteración: ${i} `
+      );
 
-      if (f.evaluate({ x: c }) === 0) {
+      if (E < lim || f.evaluate({ x: c }) === 0) {
         //arr.push(`mult: ${mult}, raiz: ${c}, iteración: ${i}`);
         break;
       } else if (mult < 0) {
@@ -53,7 +55,7 @@ export default function App() {
   return (
     <div className="App">
       <h1>Bisección</h1>
-      <h2>Start editing to see some magic happen!</h2>
+      <h2>Métodos numéricos.</h2>
       <form id="forma" onSubmit={enviar}>
         <label>Ecuación</label>
         <input
@@ -76,7 +78,7 @@ export default function App() {
           type="text"
           onChange={formulario}
         />
-        <label>Límite **NO IMPLEMENTADO</label>
+        <label>Límite</label>
         <input
           name="limite"
           placeholder="0.0001"
@@ -85,7 +87,14 @@ export default function App() {
         />
         <button type="submit">Calcular</button>
       </form>
-      <div>{respuesta && respuesta.map((r, i) => <p key={i}>{r}</p>)}</div>
+      <div>
+        {respuesta &&
+          respuesta.map((r, i) => (
+            <p key={i} className="resultado">
+              {r}
+            </p>
+          ))}
+      </div>
     </div>
   );
 }

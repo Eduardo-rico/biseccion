@@ -25,3 +25,8 @@
   font-size: 20px;
   align-content: center;
 }
+
+.resultado {
+  display: flex;
+  justify-content: flex-start;
+}
