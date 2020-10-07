@@ -8,6 +8,7 @@ export default function App() {
 
   const calcular = (formula, initial, upper, limite) => {
     const arr = [];
+    //se 
     const f = parse(formula);
     let a = Number(initial);
     let b = Number(upper);
@@ -18,14 +19,16 @@ export default function App() {
     let i = 0;
     const aprox = [1];
     while (10000 > i) {
+      //while 10,000 > i evita el stackoverflow nativo de codesandbox
       c = (a + b) / 2.0;
       let mult = f.evaluate({ x: c }) * f.evaluate({ x: a });
       let E = abs(1 - aprox[i - 1] / c);
       aprox.push(c);
       arr.push(
-        ` Raiz: ${c}, error: ${E * 100}%, mult: ${mult}, iteración: ${i} `
+        ` Iteración: ${i + 1}, xl: ${a}, xu: ${b}, RAIZ: ${c}, error: ${
+          E * 100
+        }% `
       );
-      guardarRespuesta(arr.reverse());
 
       if (E < lim || f.evaluate({ x: c }) === 0) {
         //arr.push(`mult: ${mult}, raiz: ${c}, iteración: ${i}`);
@@ -37,6 +40,7 @@ export default function App() {
       }
       i = i + 1;
     }
+    guardarRespuesta(arr.reverse());
     console.log(respuesta);
   };
 
