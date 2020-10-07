@@ -8,12 +8,13 @@ export default function App() {
 
   const calcular = (formula, initial, upper, limite) => {
     const arr = [];
-    //se 
+    //se parsea la fórmula
     const f = parse(formula);
+    //se cambia el tipo de dato
     let a = Number(initial);
     let b = Number(upper);
     const lim = abs(Number(limite));
-
+    // c es la nueva raiz, typescritp let c: Number;
     let c;
 
     let i = 0;
