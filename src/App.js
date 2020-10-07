@@ -25,6 +25,7 @@ export default function App() {
       arr.push(
         ` Raiz: ${c}, error: ${E * 100}%, mult: ${mult}, iteración: ${i} `
       );
+      guardarRespuesta(arr.reverse());
 
       if (E < lim || f.evaluate({ x: c }) === 0) {
         //arr.push(`mult: ${mult}, raiz: ${c}, iteración: ${i}`);
@@ -36,7 +37,6 @@ export default function App() {
       }
       i = i + 1;
     }
-    guardarRespuesta(arr.reverse());
     console.log(respuesta);
   };
 
