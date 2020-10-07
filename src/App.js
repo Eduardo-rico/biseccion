@@ -57,7 +57,9 @@ export default function App() {
       <h1>Bisección</h1>
       <h2>Métodos numéricos.</h2>
       <form id="forma" onSubmit={enviar}>
-        <label>Ecuación (Variable siempre como x)</label>
+        <label>
+          Ecuación <small>Variable siempre como x</small>
+        </label>
         <input
           name="ecuacion"
           placeholder="x^2+x+23=0"
@@ -78,7 +80,10 @@ export default function App() {
           type="text"
           onChange={formulario}
         />
-        <label>Límite</label>
+        <label>
+          Límite{" "}
+          <small>Default: El algoritmo se detiene cuando f(xi)*f(xu)=0</small>
+        </label>
         <input
           name="limite"
           placeholder="0.0001"
